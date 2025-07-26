@@ -1,0 +1,9 @@
+.env
+*.log
+.vscode/
+.idea/
+*.iml
+*.swp
+*.tmp
+.DS_store
+Thumbs.db
