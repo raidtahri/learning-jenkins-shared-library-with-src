@@ -10,7 +10,7 @@ class DockerHelper implements Serializable {
         this.dockerDir = dockerDir
     }
 
-    def buildImage(String imageName, String imageTag) {
+    def buildDockerImage(String imageName, String imageTag) {
         steps.dir(dockerDir) {
             steps.withCredentials([steps.usernamePassword(
                 credentialsId: 'dockerhub',
@@ -23,7 +23,7 @@ class DockerHelper implements Serializable {
         }
     }
 
-    def pushImage(String imageName, String imageTag) {
+    def pushToDockerHub(String imageName, String imageTag) {
         steps.withCredentials([steps.usernamePassword(
             credentialsId: 'dockerhub',
             usernameVariable: 'DOCKER_USER',
