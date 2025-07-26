@@ -30,11 +30,10 @@ class DockerHelper implements Serializable {
             passwordVariable: 'DOCKER_PASS'
         )]) {
             steps.echo "Pushing Docker image to Docker Hub"
-            steps.sh """
-                echo "\$DOCKER_PASS" | docker login -u "\$DOCKER_USER" --password-stdin
-                docker push \${steps.env.DOCKER_USER}/${imageName}:${imageTag}
-                docker logout
-            """
+               steps.sh 'echo "\$DOCKER_PASS" | docker login -u "\$DOCKER_USER" --password-stdin'
+               steps.sh "docker push \${steps.env.DOCKER_USER}/${imageName}:${imageTag}"
+               steps.sh "docker logout"
+            
         }
     }
 }
